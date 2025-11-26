@@ -478,15 +478,19 @@
         ];
 
         function showAllEmails() {
-            console.log("Электронные адреса пользователей:")
-            users.forEach(user => console.log(user.email));
+            let emails = document.querySelector("#emailAddressesOutput");
+            let allEmails = "";
+            users.forEach(user => {allEmails += user.email + "<br>"});
+            emails.innerHTML = allEmails;
         }
 
+
         function showHigestFriendCount() {
+            let higestFriend = document.querySelector("#greatesFriendsCountOutput");
+            let value = "";
             console.log("Пользователи с наибольшим количеством друзей");
 
             let max = Number.MIN_VALUE;
-
             users.forEach(user => {
                 if (max < user.friends.length)
                     max = user.friends.length;
@@ -494,7 +498,8 @@
 
             users
                 .filter(user => user.friends.length == max)
-                .forEach(user => console.log(user.name.first + " " + user.name.last));
+                .forEach(user => {value + " " + user.name.last});
+            higestFriend.innerHTML = value;
         }
 
         function showMinMaxBalance() {
