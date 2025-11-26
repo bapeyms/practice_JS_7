@@ -488,7 +488,6 @@
         function showHigestFriendCount() {
             let higestFriend = document.querySelector("#greatesFriendsCountOutput");
             let value = "";
-            console.log("Пользователи с наибольшим количеством друзей");
 
             let max = Number.MIN_VALUE;
             users.forEach(user => {
@@ -498,11 +497,17 @@
 
             users
                 .filter(user => user.friends.length == max)
-                .forEach(user => {value + " " + user.name.last});
+                .forEach(user => {
+                    value += " " + user.name.last;
+                });
             higestFriend.innerHTML = value;
         }
 
         function showMinMaxBalance() {
+            let maxBal = document.querySelector("#greatestBalanceCompanyOutput");
+            let maxVal = "";
+            let minBal = document.querySelector("#lowestBalanceCompanyOutput");
+            let minVal = "";
             let minBalance = Number.MAX_VALUE;
             let maxBalance = Number.MIN_VALUE;
 
@@ -515,15 +520,19 @@
                 }
             });
 
-            console.log("Компании пользователей с наибольшим балансом:")
             users
                 .filter(user => user.balance == maxBalance)
-                .forEach(user => console.log(user.company));
-
-            console.log("Компании пользователей с наименьшим балансом:")
+                .forEach(user => {
+                    maxVal += " " + user.company;
+                });
+            maxBal.innerHTML = maxVal;
+            
             users
                 .filter(user => user.balance == minBalance)
-                .forEach(user => console.log(user.company));
+                .forEach(user => {
+                    minVal += " " + user.company;
+                });
+            minBal.innerHTML = minVal;
         }
 
         showAllEmails();
