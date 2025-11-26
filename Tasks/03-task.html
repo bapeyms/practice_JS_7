@@ -86,7 +86,7 @@
        let output = document.querySelector("#result");
        let countSum2 = 0;
        let countSum3 = 0;
-       let result = "";
+       let message = "";
 
        for (let i = 1; i < table.rows.length - 1; i++) {
         let row = table.rows[i];
@@ -97,12 +97,18 @@
         }
         summary2.innerHTML = countSum2;
         summary3.innerHTML = countSum3;
-        
 
-        if(countSum2 > countSum3){
-            result = "Отдел 1 сделал больше продаж";
-            output.innerHTML = `${result}`;
+
+        if (countSum2 > countSum3){
+            message = "Отдел 1 сделал больше продаж";
         }
+        else if (countSum2 < countSum3){
+            message = "Отдел 2 сделал больше продаж";
+        }
+        else{
+            message = "Отдел 1 = Отдел 2";
+        }
+        output.innerHTML = `${message}`;
     </script>
 </body>
 </html>
