@@ -81,21 +81,28 @@
         Используйте любые методы, которые были рассмотрены на в прошлых уроках.
         */
        let summary2 = document.querySelector("#sum2");
+       let summary3 = document.querySelector("#sum3");
        let table = document.querySelector("#statsTable");
        let output = document.querySelector("#result");
-       let sum22 = 0;
-       let sum33 = 0;
-       let rowLength = table.rows[0].cells.length;
-       for (const row of table.rows) {
-            let secondCell = row.cells[rowLength - 2];
-            sum22 += Number(secondCell.textContent);
+       let countSum2 = 0;
+       let countSum3 = 0;
+       let result = "";
+
+       for (let i = 1; i < table.rows.length - 1; i++) {
+        let row = table.rows[i];
+        let secondCell = row.cells[1];
+        let thirdCell = row.cells[2];
+        countSum2 += Number(secondCell.textContent);
+        countSum3 += Number(thirdCell.textContent);
         }
-        for (const row of table.rows) {
-            let thirdCell = row.cells[rowLength - 1];
-            sum33 += Number(secondCell.textContent);
+        summary2.innerHTML = countSum2;
+        summary3.innerHTML = countSum3;
+        
+
+        if(countSum2 > countSum3){
+            result = "Отдел 1 сделал больше продаж";
+            output.innerHTML = `${result}`;
         }
-        summary2.innerHTML = sum22;
-        sum3.innerHTML = sum33;
     </script>
 </body>
 </html>
